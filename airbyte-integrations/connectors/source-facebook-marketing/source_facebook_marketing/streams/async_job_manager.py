@@ -30,7 +30,7 @@ class InsightAsyncJobManager:
     JOB_STATUS_UPDATE_SLEEP_SECONDS = 30
     # Maximum of concurrent jobs that could be scheduled. Since throttling
     # limit is not reliable indicator of async workload capability we still have to use this parameter.
-    MAX_JOBS_IN_QUEUE = 100
+    MAX_JOBS_IN_QUEUE = 7
 
     def __init__(self, api: "API", jobs: Iterator[AsyncJob], account_id: str):
         """Init
