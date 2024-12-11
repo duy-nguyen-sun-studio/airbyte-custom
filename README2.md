@@ -4,7 +4,7 @@ Step to update facebook ads custom connector:
 
 - Install to local docker repository using command: 
 ```
-airbyte-ci connectors --name=source-facebook-marketing build
+airbyte-ci connectors --name=source-facebook-marketing build --architecture=linux/amd64
 ```
 
 - Login to docker
