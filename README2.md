@@ -15,12 +15,12 @@ docker login -u duynguyen2509
 
 - Tag using command:
 ```
-docker tag airbyte/source-facebook-marketing:dev duynguyen2509/airbyte:fbads
+docker tag airbyte/source-facebook-marketing:dev duynguyen2509/source-facebook-marketing-custom:1.0.0
 ```
 
 - Push to online docker repository using command:
 ```
-docker push duynguyen2509/airbyte:fbads
+docker push duynguyen2509/source-facebook-marketing-custom:1.0.0
 ```
 
 - SSH to airbyte instance and login using command:
@@ -31,10 +31,10 @@ sudo docker login -u duynguyen2509
 
 - Pull image using command:
 ```
-sudo docker pull duynguyen2509/airbyte:fbads
+sudo docker pull duynguyen2509/source-facebook-marketing-custom:1.0.0
 ```
 
 - Setup new connector:
 display name: Facebook Marketing Custom
-repository name: duynguyen2509/airbyte
-image tag: fbads
+repository name: duynguyen2509/source-facebook-marketing-custom
+image tag: 1.0.0
