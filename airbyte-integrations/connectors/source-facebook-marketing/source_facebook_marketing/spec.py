@@ -160,9 +160,9 @@ class InsightConfig(BaseModel):
     insights_job_timeout: Optional[PositiveInt] = Field(
         title="Custom Insights Job Timeout",
         description="The insights job timeout",
-        maximum=60,
+        maximum=1440,
         mininum=10,
-        default=60,
+        default=180,
     )
 
 
@@ -299,9 +299,9 @@ class ConnectorConfig(BaseConfig):
             "If you definitely know that 60 minutes is not enough for your report to be processed then you can decrease the timeout value, "
             "so we start breaking job to smaller parts faster."
         ),
-        maximum=60,
+        maximum=1440,
         mininum=10,
-        default=60,
+        default=180,
     )
 
     action_breakdowns_allow_empty: bool = Field(
