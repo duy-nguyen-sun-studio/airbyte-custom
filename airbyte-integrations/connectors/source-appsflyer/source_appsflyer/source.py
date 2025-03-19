@@ -37,13 +37,15 @@ class AppsflyerStream(HttpStream, ABC):
     transformer: TypeTransformer = TypeTransformer(TransformConfig.DefaultSchemaNormalization | TransformConfig.CustomSchemaNormalization)
 
     def __init__(
-        self, app_id: str, api_token: str, timezone: str, start_date: Union[date, str] = None, end_date: Union[date, str] = None, **kwargs
+        self, app_id: str, api_token: str, timezone: str, intervals: int = None, start_date: Union[date, str] = None, end_date: Union[date, str] = None, **kwargs
     ):
         super().__init__(**kwargs)
         self.app_id = app_id
         self.api_token = api_token
         self.start_date = start_date
         self.end_date = end_date
+        if intervals is not None and intervals > 0:
+            self.intervals = intervals
         self.timezone = pendulum.timezone(timezone)
 
     @property
