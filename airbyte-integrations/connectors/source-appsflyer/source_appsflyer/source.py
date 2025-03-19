@@ -239,7 +239,7 @@ class EventsMixin:
 
 
 class InAppEvents(RawDataMixin, IncrementalAppsflyerStream):
-    intervals = 31
+    intervals = 7
     cursor_field = "event_time"
 
     def path(
@@ -249,7 +249,7 @@ class InAppEvents(RawDataMixin, IncrementalAppsflyerStream):
 
 
 class OrganicInAppEvents(RawDataMixin, IncrementalAppsflyerStream):
-    intervals = 31
+    intervals = 7
     cursor_field = "event_time"
     additional_fields = additional_fields.organic_in_app_events
 
