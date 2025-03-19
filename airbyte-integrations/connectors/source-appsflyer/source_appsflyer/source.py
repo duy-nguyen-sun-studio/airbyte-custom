@@ -46,6 +46,7 @@ class AppsflyerStream(HttpStream, ABC):
         self.end_date = end_date
         if intervals is not None and intervals > 0:
             self.intervals = intervals
+        logging.getLogger("airbyte").log(logging.INFO, f"Using intervals: {self.intervals} hours")
         self.timezone = pendulum.timezone(timezone)
 
     @property
