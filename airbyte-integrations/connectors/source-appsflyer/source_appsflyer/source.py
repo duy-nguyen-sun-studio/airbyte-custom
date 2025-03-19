@@ -122,7 +122,7 @@ class AppsflyerStream(HttpStream, ABC):
 
 # Basic incremental stream
 class IncrementalAppsflyerStream(AppsflyerStream, ABC):
-    intervals = 60
+    intervals = 60 * 24
 
     def get_updated_state(self, current_stream_state: MutableMapping[str, Any], latest_record: Mapping[str, Any]) -> Mapping[str, Any]:
         try:
@@ -157,7 +157,7 @@ class IncrementalAppsflyerStream(AppsflyerStream, ABC):
 
     def chunk_date_range(self, start_date: datetime) -> List[Mapping[str, any]]:
         dates = []
-        delta = timedelta(days=self.intervals)
+        delta = timedelta(hours=self.intervals)
         while start_date <= self.end_date:
             end_date = self.get_date(start_date + delta, self.end_date, min)
             dates.append({self.cursor_field: start_date, self.cursor_field + "_end": end_date})
@@ -239,7 +239,7 @@ class EventsMixin:
 
 
 class InAppEvents(RawDataMixin, IncrementalAppsflyerStream):
-    intervals = 7
+    intervals = 7 * 24
     cursor_field = "event_time"
 
     def path(
@@ -249,7 +249,7 @@ class InAppEvents(RawDataMixin, IncrementalAppsflyerStream):
 
 
 class OrganicInAppEvents(RawDataMixin, IncrementalAppsflyerStream):
-    intervals = 7
+    intervals = 7 * 24
     cursor_field = "event_time"
     additional_fields = additional_fields.organic_in_app_events
 
